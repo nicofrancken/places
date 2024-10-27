@@ -34,6 +34,22 @@
         }
       }
     },
+    "Location selection screen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location selection screen"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locatie selection scherm"
+          }
+        }
+      }
+    },
     "Locations" : {
       "localizations" : {
         "en" : {
@@ -46,6 +62,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Locaties"
+          }
+        }
+      }
+    },
+    "Locations title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locations title"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locaties titel"
           }
         }
       }
@@ -95,6 +127,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        }
+      }
+    },
+    "Select coordinate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select coordinate"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecteer locatie"
+          }
+        }
+      }
+    },
+    "Selects latitude: %lf and longitude: %lf" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Selects latitude: %1$lf and longitude: %2$lf"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecteert lengtegraad: %1$lf en breedtegraad: %2$lf"
           }
         }
       }

@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct LocationsView: View {
-    @StateObject var viewModel = LocationsViewModel(getLocationsUseCase: GetLocationsUseCaseImp(locationsRepository: LocationsRepositoryImp(locationsApi: LocationsApiImp(apiClient: ApiClientImp()))), launchWikipediaWithCoordinatesUseCase: LaunchWikipediaWithCoordinatesUseCaseImp(wikipediaAppLauncher: WikipediaAppLauncherImp(externalAppLauncher: ExternalAppLauncherImp())))
+    @StateObject var viewModel = LocationsViewModelFactory.shared.getInstance()
     
     var body: some View {
         VStack {
             Text("Locations")
                 .font(.largeTitle)
+                .accessibilityLabel("Locations title")
+                .accessibilityHint("Select coordinate")
             
             ScrollView(.vertical) {
                 VStack(alignment: .leading, spacing: 10) {
@@ -42,6 +44,8 @@ struct LocationsView: View {
                             .background(isSelectedLocation(location) ? .blue : .cyan)
                             .cornerRadius(10)
                         }
+                        .accessibilityLabel("Selects latitude: \(location.latitude) and longitude: \(location.longitude)")
+                        .accessibilityHint("Select coordinate")
                     }
                 }
             }
@@ -59,6 +63,8 @@ struct LocationsView: View {
         .padding(.horizontal, 20)
         .foregroundColor(.black)
         .background(Color.white)
+        .accessibilityLabel("Location selection screen")
+        .accessibilityHint("Location selection screen")
         .task {
             await viewModel.populateLocations()
         }
