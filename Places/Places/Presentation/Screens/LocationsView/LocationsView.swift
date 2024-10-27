@@ -50,7 +50,7 @@ struct LocationsView: View {
             switch error {
             case .locationPolulationFailed:
                 Alert(
-                    title: Text("Location population error"),
+                    title: Text("Network error"),
                     message: Text("Unable to retrieve locations"),
                     dismissButton: .default(Text("OK"))
                 )

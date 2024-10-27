@@ -18,7 +18,7 @@ final class LaunchWikipediaWithCoordinatesUseCaseTests: XCTestCase {
         launchWikipediaWithCoordinatesUseCase = LaunchWikipediaWithCoordinatesUseCaseImp(wikipediaAppLauncher: wikiPediaAppLauncherMock)
     }
 
-    func testIt() throws {
+    func testLaunchWikiepedia() throws {
         // Given
         let latitude = 0.0
         let longitude = 0.1
