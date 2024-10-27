@@ -24,8 +24,10 @@ class WikipediaAppLauncherImp: WikipediaAppLauncher {
         }
         
         urlComponents.queryItems = [
-            URLQueryItem(name: "WMFCoordinates",
-                         value: "\(coordinates.latitude),\(coordinates.latitude)")
+            URLQueryItem(name: "WMFLatitude",
+                         value: "\(coordinates.latitude)"),
+            URLQueryItem(name: "WMFLongitude",
+                         value: "\(coordinates.longitude)")
         ]
         
         guard let constructedUrl = urlComponents.url else {

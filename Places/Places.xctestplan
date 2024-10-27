@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "81FD6FBB-9271-4CA9-A381-97D6B5090BA5",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Places.xcodeproj",
+      "identifier" : "CCA170D32CCC166D0062EBDA",
+      "name" : "Places"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Places.xcodeproj",
+        "identifier" : "CCA170E32CCC166E0062EBDA",
+        "name" : "PlacesTests"
+      }
+    }
+  ],
+  "version" : 1
+}
