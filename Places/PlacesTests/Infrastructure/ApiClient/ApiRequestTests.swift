@@ -14,16 +14,17 @@ final class ApiRequestTests: XCTestCase {
     func testApiRequest() {
         // Given
         let request = TestRequest()
-        let expectedUrlResult = URL(string: "https://test.com/testObjects?param1=value1&param2=value2")!
+        let expectedUrl = URL(string: "https://test.com/testObjects")!
+        
         
         // When
-        guard let urlResult = request.toUrl() else {
+        guard let url = request.toUrl() else {
             XCTFail("UrlRequest is nil")
             return
         }
         
         // Then
-        XCTAssertTrue(urlsAreEqual(expectedUrlResult, urlResult))
+        XCTAssertEqual(expectedUrl, url)
     }
 }
 
