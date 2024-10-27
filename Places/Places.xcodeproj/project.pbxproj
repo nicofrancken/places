@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CCAF47662CCE5D1D0043C213 /* MockFramework in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF47652CCE5D1D0043C213 /* MockFramework */; };
+		CCAF478F2CCE6E240043C213 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF478E2CCE6E240043C213 /* OHHTTPStubs */; };
+		CCAF47912CCE6E240043C213 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF47902CCE6E240043C213 /* OHHTTPStubsSwift */; };
+		CCAF47932CCE759B0043C213 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CCAF47922CCE759B0043C213 /* Localizable.xcstrings */; };
+		CCAF479E2CCE84F80043C213 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF479D2CCE84F80043C213 /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CCA170E52CCC166E0062EBDA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -19,6 +27,7 @@
 /* Begin PBXFileReference section */
 		CCA170D42CCC166D0062EBDA /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA170E42CCC166E0062EBDA /* PlacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCAF47922CCE759B0043C213 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		CCD344ED2CCD69B900E4F2C7 /* Places.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Places.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCAF479E2CCE84F80043C213 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +57,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCAF47662CCE5D1D0043C213 /* MockFramework in Frameworks */,
+				CCAF47912CCE6E240043C213 /* OHHTTPStubsSwift in Frameworks */,
+				CCAF478F2CCE6E240043C213 /* OHHTTPStubs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +69,7 @@
 		CCA170CB2CCC166D0062EBDA = {
 			isa = PBXGroup;
 			children = (
+				CCAF47922CCE759B0043C213 /* Localizable.xcstrings */,
 				CCD344ED2CCD69B900E4F2C7 /* Places.xctestplan */,
 				CCA170D62CCC166D0062EBDA /* Places */,
 				CCA170E72CCC166E0062EBDA /* PlacesTests */,
@@ -92,6 +106,7 @@
 			);
 			name = Places;
 			packageProductDependencies = (
+				CCAF479D2CCE84F80043C213 /* Alamofire */,
 			);
 			productName = Places;
 			productReference = CCA170D42CCC166D0062EBDA /* Places.app */;
@@ -115,6 +130,9 @@
 			);
 			name = PlacesTests;
 			packageProductDependencies = (
+				CCAF47652CCE5D1D0043C213 /* MockFramework */,
+				CCAF478E2CCE6E240043C213 /* OHHTTPStubs */,
+				CCAF47902CCE6E240043C213 /* OHHTTPStubsSwift */,
 			);
 			productName = PlacesTests;
 			productReference = CCA170E42CCC166E0062EBDA /* PlacesTests.xctest */;
@@ -145,9 +163,15 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = CCA170CB2CCC166D0062EBDA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CCAF47642CCE5D1D0043C213 /* XCLocalSwiftPackageReference "../MockFramework" */,
+				CCAF478D2CCE6E240043C213 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
+				CCAF479C2CCE84F80043C213 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CCA170D52CCC166D0062EBDA /* Products */;
 			projectDirPath = "";
@@ -164,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCAF47932CCE759B0043C213 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +286,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -317,6 +343,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -450,6 +477,54 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		CCAF47642CCE5D1D0043C213 /* XCLocalSwiftPackageReference "../MockFramework" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../MockFramework;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CCAF478D2CCE6E240043C213 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		CCAF479C2CCE84F80043C213 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CCAF47652CCE5D1D0043C213 /* MockFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MockFramework;
+		};
+		CCAF478E2CCE6E240043C213 /* OHHTTPStubs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF478D2CCE6E240043C213 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubs;
+		};
+		CCAF47902CCE6E240043C213 /* OHHTTPStubsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF478D2CCE6E240043C213 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubsSwift;
+		};
+		CCAF479D2CCE84F80043C213 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF479C2CCE84F80043C213 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CCA170CC2CCC166D0062EBDA /* Project object */;
 }

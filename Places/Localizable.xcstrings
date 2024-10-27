@@ -1,0 +1,68 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lf" : {
+
+    },
+    "Latitude" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latitude"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breedtegraad"
+          }
+        }
+      }
+    },
+    "Location population error" : {
+
+    },
+    "Locations" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locations"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locaties"
+          }
+        }
+      }
+    },
+    "Longitude" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longitude"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lengtegraad"
+          }
+        }
+      }
+    },
+    "OK" : {
+
+    },
+    "Unable to retrieve locations" : {
+
+    }
+  },
+  "version" : "1.0"
+}

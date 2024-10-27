@@ -8,16 +8,22 @@
 import Foundation
 
 class LocationsApiImp: LocationsApi {
-    private let networkClient: ApiClient
+    private let apiClient: ApiClient
     private let baseUrl = "https://raw.githubusercontent.com"
     
-    init(networkClient: ApiClient) {
-        self.networkClient = networkClient
+    init(apiClient: ApiClient) {
+        self.apiClient = apiClient
     }
     
     func getLocations() async throws -> [Location] {
         let request = LocationsGetRequest(baseURL: baseUrl)
         
-        return try await networkClient.execute(request).locations
+        do {
+            let locations = try await apiClient.execute(request).locations
+            
+            return locations
+        } catch {
+            throw LocationsApiError.errorRetrievingLocations(error: error)
+        }
     }
 }

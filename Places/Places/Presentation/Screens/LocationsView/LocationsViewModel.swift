@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-@MainActor
 class LocationsViewModel: ObservableObject {
     @Published var locations = [LocationUIState]()
     @Published var selectedLocation: LocationUIState?
+    @Published var error: LocationsViewError?
     
     // Dependencies
     private let getLocationsUseCase: GetLocationsUseCase
@@ -22,20 +22,15 @@ class LocationsViewModel: ObservableObject {
         self.launchWikipediaWithCoordinatesUseCase = launchWikipediaWithCoordinatesUseCase
     }
     
-    func populateLocations() async {
+    @MainActor func populateLocations() async {
         do {
-            self.locations = try await getLocationsUseCase().map {
-                LocationUIState(name: $0.name ?? "",
-                                latitude: $0.lat,
-                                longitude: $0.long)
-            }
+            self.locations = try await getLocationsUseCase().map { $0.toLocationUIState() }
         } catch {
-            // TODO: Show error
-            print("Error: \(error)")
+            self.error = LocationsViewError.locationPolulationFailed
         }
     }
     
-    func selectLocation(_ location: LocationUIState) {
+    @MainActor func selectLocation(_ location: LocationUIState) {
         selectedLocation = location
         
         launchWikipediaWithCoordinatesUseCase(latitude: location.latitude,

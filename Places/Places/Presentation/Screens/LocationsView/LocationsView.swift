@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct LocationsView: View {
-    @StateObject var viewModel = LocationsViewModel(getLocationsUseCase: GetLocationsUseCaseImp(locationsRepository: LocationsRepositoryImp(locationsApi: LocationsApiImp(networkClient: ApiClientImp(urlSession: .shared)))), launchWikipediaWithCoordinatesUseCase: LaunchWikipediaWithCoordinatesUseCaseImp(wikipediaAppLauncher: WikipediaAppLauncherImp(externalAppLauncher: ExternalAppLauncherImp())))
+    @StateObject var viewModel = LocationsViewModel(getLocationsUseCase: GetLocationsUseCaseImp(locationsRepository: LocationsRepositoryImp(locationsApi: LocationsApiImp(apiClient: ApiClientImp()))), launchWikipediaWithCoordinatesUseCase: LaunchWikipediaWithCoordinatesUseCaseImp(wikipediaAppLauncher: WikipediaAppLauncherImp(externalAppLauncher: ExternalAppLauncherImp())))
     
     var body: some View {
         VStack {
-            Text("City locations")
+            Text("Locations")
                 .font(.largeTitle)
             
             ScrollView(.vertical) {
@@ -22,7 +22,7 @@ struct LocationsView: View {
                             viewModel.selectLocation(location)
                         } label: {
                             HStack(alignment: .center) {
-                                Text(location.name)
+                                Text(location.name ?? "")
                                     .font(.title)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 
@@ -38,12 +38,22 @@ struct LocationsView: View {
                             }
                             .padding()
                             
-                            .font(.headline)
+                            .font(.caption)
                             .background(isSelectedLocation(location) ? .blue : .cyan)
                             .cornerRadius(10)
                         }
                     }
                 }
+            }
+        }
+        .alert(item: $viewModel.error) { error in
+            switch error {
+            case .locationPolulationFailed:
+                Alert(
+                    title: Text("Location population error"),
+                    message: Text("Unable to retrieve locations"),
+                    dismissButton: .default(Text("OK"))
+                )
             }
         }
         .padding(.horizontal, 20)

@@ -7,7 +7,7 @@
 
 enum ApiClientError: Error {
     case invalidRequest
-    case networkError(Error)
-    case noData
-    case decodingError(Error)
+    case responseError(error: Error, responseCode: Int?)
+    case decodingError(error: Error)
+    case networkError(error: Error)
 }

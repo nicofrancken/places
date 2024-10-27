@@ -17,36 +17,18 @@ protocol ApiRequest {
 }
 
 extension ApiRequest {
-    func toURLRequest() -> URLRequest? {
+    func toUrl() -> URL? {
         guard let url = URL(string: baseURL),
               var urlComponents = URLComponents(url: url.appendingPathComponent(path),
                                                 resolvingAgainstBaseURL: false) else {
             return nil
         }
         
-        if method == .get, let parameters = parameters as? [String: String] {
-            urlComponents.queryItems = parameters.map {
-                URLQueryItem(name: $0.key, value: $0.value)
-            }
-        }
-        
-        guard let url = urlComponents.url else {
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = method.rawValue
-        request.allHTTPHeaderFields = headers
-        
-        if method != .get, let parameters = parameters {
-            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters)
-        }
-        
-        return request
+        return urlComponents.url
     }
 }
 
-enum HttpMethod: String {
+enum HttpMethod: String, Equatable {
     case get
     case post
     case put
