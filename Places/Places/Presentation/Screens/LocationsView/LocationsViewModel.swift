@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import PlacesDomain
+import PlacesInfrastructure
 
 class LocationsViewModel: ObservableObject {
-    @Published var locations = [LocationUIState]()
-    @Published var selectedLocation: LocationUIState?
+    @Published var locations = [Location]()
+    @Published var selectedLocation: Location?
     @Published var error: LocationsViewError?
+    @Published var isLoading = false
     
     // Dependencies
     private let getLocationsUseCase: GetLocationsUseCase
@@ -22,18 +25,41 @@ class LocationsViewModel: ObservableObject {
         self.launchWikipediaWithCoordinatesUseCase = launchWikipediaWithCoordinatesUseCase
     }
     
-    @MainActor func populateLocations() async {
+    func populateLocations() async {
         do {
-            self.locations = try await getLocationsUseCase().map { $0.toLocationUIState() }
+            let newLocations = try await getLocationsUseCase()
+            await updateLocationsUIState(newLocations: newLocations)
         } catch {
-            self.error = LocationsViewError.locationPolulationFailed
+            await updateErrorUIState(error: .locationPolulationFailed)
         }
     }
     
-    @MainActor func selectLocation(_ location: LocationUIState) {
+    @MainActor
+    func selectLocation(_ location: Location) {
         selectedLocation = location
-        
-        launchWikipediaWithCoordinatesUseCase(latitude: location.latitude,
-                                              longitude: location.longitude)
+        launchWiki(location)
+    }
+    
+    @MainActor
+    func opem(_ customLocation: Location) {
+        selectedLocation = customLocation
+        launchWiki(customLocation)
+    }
+    
+    func launchWiki(_ location: Location) {
+        Task {
+            await launchWikipediaWithCoordinatesUseCase(latitude: location.lat,
+                                                        longitude: location.long)
+        }
+    }
+    
+    @MainActor
+    private func updateLocationsUIState(newLocations: [Location]) {
+        self.locations = newLocations
+    }
+    
+    @MainActor
+    private func updateErrorUIState(error: LocationsViewError) {
+        self.error = error
     }
 }

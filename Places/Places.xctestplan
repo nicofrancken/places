@@ -11,8 +11,8 @@
   "defaultOptions" : {
     "targetForVariableExpansion" : {
       "containerPath" : "container:Places.xcodeproj",
-      "identifier" : "CCA170D32CCC166D0062EBDA",
-      "name" : "Places"
+      "identifier" : "CCA170E32CCC166E0062EBDA",
+      "name" : "PlacesTests"
     }
   },
   "testTargets" : [

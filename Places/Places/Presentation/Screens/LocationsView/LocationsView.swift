@@ -6,48 +6,91 @@
 //
 
 import SwiftUI
+import PlacesInfrastructure
 
 struct LocationsView: View {
     @StateObject var viewModel = LocationsViewModelFactory.shared.getInstance()
+    @State var latitude: String = ""
+    @State var longitude: String = ""
+    @State var coordinateValidationError: CoordinateValidationError?
     
     var body: some View {
-        VStack {
-            Text("Locations")
-                .font(.largeTitle)
-                .accessibilityLabel("Locations title")
-                .accessibilityHint("Select coordinate")
-            
-            ScrollView(.vertical) {
-                VStack(alignment: .leading, spacing: 10) {
-                    ForEach(viewModel.locations) { location in
-                        Button {
-                            viewModel.selectLocation(location)
-                        } label: {
-                            HStack(alignment: .center) {
-                                Text(location.name ?? "")
-                                    .font(.title)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Latitude")
-                                    Text("\(location.latitude)")
-                                }
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Longitude")
-                                    Text("\(location.longitude)")
-                                }
-                            }
-                            .padding()
-                            
-                            .font(.caption)
-                            .background(isSelectedLocation(location) ? .blue : .cyan)
-                            .cornerRadius(10)
-                        }
-                        .accessibilityLabel("Selects latitude: \(location.latitude) and longitude: \(location.longitude)")
-                        .accessibilityHint("Select coordinate")
-                    }
+        VStack(spacing: 30) {
+            VStack( spacing: 10) {
+                Text("Enter coordinates")
+                    .font(.title)
+                    .accessibilityLabel("Enter coordinates title")
+                
+                TextField("Latitude", text: $latitude)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .accessibilityLabel("Latitude textfield")
+                    .accessibilityHint("Enter latitude here")
+                
+                
+                TextField("Longitude", text: $longitude)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .accessibilityLabel("Longitude textfield")
+                    .accessibilityHint("Enter Longitude here")
+                
+                if let error = coordinateValidationError {
+                    Text(error.LocalizedStringKey)
+                        .foregroundColor(.red)
+                        .accessibilityLabel("Coordinate error text")
+                        .accessibilityHint(error.LocalizedStringKey)
                 }
+                
+                Button("Open in Wiki app") {
+                    validateAndLookup()
+                }
+                .foregroundColor(.white) // Text color
+                .padding(.horizontal, 20) // Padding on left and right
+                .padding(.vertical, 10) // Padding on top and bottom
+                .background(Color.blue) // Background color
+                .clipShape(Capsule())
+            }
+            
+            Divider()
+            
+            VStack {
+                Text("Select location")
+                    .font(.title)
+                    .accessibilityLabel("Select location title")
+                
+                ScrollView(.vertical) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(viewModel.locations) { location in
+                            Button {
+                                viewModel.selectLocation(location)
+                            } label: {
+                                HStack(alignment: .center) {
+                                    Text(location.name ?? "")
+                                        .font(.title)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text("Latitude")
+                                        Text("\(location.lat)")
+                                    }
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text("Longitude")
+                                        Text("\(location.long)")
+                                    }
+                                }
+                                .padding()
+                                .foregroundColor(.black)
+                                .font(.caption)
+                                .background(isSelectedLocation(location) ? .blue : .cyan)
+                                .cornerRadius(10)
+                            }
+                            .accessibilityLabel("Select coordinate button")
+                            .accessibilityHint("Opens latitude: \(location.lat) and longitude: \(location.long) in Wikiepdia app")
+                        }
+                    }
+                    
+                    
+                }
+                
             }
         }
         .alert(item: $viewModel.error) { error in
@@ -61,17 +104,26 @@ struct LocationsView: View {
             }
         }
         .padding(.horizontal, 20)
-        .foregroundColor(.black)
-        .background(Color.white)
         .accessibilityLabel("Location selection screen")
-        .accessibilityHint("Location selection screen")
+        .accessibilityHint("Locations can be selected or manually inputted")
         .task {
             await viewModel.populateLocations()
         }
     }
     
-    func isSelectedLocation(_ location: LocationUIState) -> Bool {
+    private func isSelectedLocation(_ location: Location) -> Bool {
         location == viewModel.selectedLocation
+    }
+    
+    private func validateAndLookup() {
+        if let validationError = CoordinatesValidator.validate(latitude: latitude, longitude: longitude) {
+            coordinateValidationError = validationError
+            return
+        }
+        
+        if let lat = Double(latitude), let long = Double(longitude) {
+            viewModel.launchWiki(Location(name: nil, lat: lat, long: long))
+        }
     }
 }
 

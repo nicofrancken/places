@@ -5,6 +5,8 @@
 //  Created by Nico Francken on 27/10/2024.
 //
 
+import PlacesDomain
+
 final class LocationsViewModelFactory {
     static let shared = LocationsViewModelFactory()
     

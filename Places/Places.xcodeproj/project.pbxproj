@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC4896B42CCF768000C657A9 /* PlacesInfrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = CC4896B32CCF768000C657A9 /* PlacesInfrastructure */; };
+		CC4896B72CCF76A000C657A9 /* PlacesDomain in Frameworks */ = {isa = PBXBuildFile; productRef = CC4896B62CCF76A000C657A9 /* PlacesDomain */; };
 		CCAF47662CCE5D1D0043C213 /* MockFramework in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF47652CCE5D1D0043C213 /* MockFramework */; };
-		CCAF478F2CCE6E240043C213 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF478E2CCE6E240043C213 /* OHHTTPStubs */; };
-		CCAF47912CCE6E240043C213 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF47902CCE6E240043C213 /* OHHTTPStubsSwift */; };
 		CCAF47932CCE759B0043C213 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CCAF47922CCE759B0043C213 /* Localizable.xcstrings */; };
-		CCAF479E2CCE84F80043C213 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF479D2CCE84F80043C213 /* Alamofire */; };
+		CCB6B2B12CCFF9D300098412 /* PlacesDomain in Frameworks */ = {isa = PBXBuildFile; productRef = CCB6B2B02CCFF9D300098412 /* PlacesDomain */; };
+		CCB6B2B32CCFF9D300098412 /* PlacesDomainMocks in Frameworks */ = {isa = PBXBuildFile; productRef = CCB6B2B22CCFF9D300098412 /* PlacesDomainMocks */; };
+		CCEFBFB72CD023930080D582 /* PlacesInfrastructureMocks in Frameworks */ = {isa = PBXBuildFile; productRef = CCEFBFB62CD023930080D582 /* PlacesInfrastructureMocks */; };
+		CCEFBFBA2CD023DE0080D582 /* PlacesDomain in Frameworks */ = {isa = PBXBuildFile; productRef = CCEFBFB92CD023DE0080D582 /* PlacesDomain */; };
+		CCEFBFBC2CD023DE0080D582 /* PlacesDomainMocks in Frameworks */ = {isa = PBXBuildFile; productRef = CCEFBFBB2CD023DE0080D582 /* PlacesDomainMocks */; };
+		CCEFBFBF2CD023EC0080D582 /* PlacesInfrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = CCEFBFBE2CD023EC0080D582 /* PlacesInfrastructure */; };
+		CCEFBFC12CD023EC0080D582 /* PlacesInfrastructureMocks in Frameworks */ = {isa = PBXBuildFile; productRef = CCEFBFC02CD023EC0080D582 /* PlacesInfrastructureMocks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +55,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCAF479E2CCE84F80043C213 /* Alamofire in Frameworks */,
+				CCEFBFBA2CD023DE0080D582 /* PlacesDomain in Frameworks */,
+				CCB6B2B12CCFF9D300098412 /* PlacesDomain in Frameworks */,
+				CC4896B72CCF76A000C657A9 /* PlacesDomain in Frameworks */,
+				CC4896B42CCF768000C657A9 /* PlacesInfrastructure in Frameworks */,
+				CCEFBFBF2CD023EC0080D582 /* PlacesInfrastructure in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,9 +67,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCEFBFB72CD023930080D582 /* PlacesInfrastructureMocks in Frameworks */,
+				CCB6B2B32CCFF9D300098412 /* PlacesDomainMocks in Frameworks */,
+				CCEFBFBC2CD023DE0080D582 /* PlacesDomainMocks in Frameworks */,
+				CCEFBFC12CD023EC0080D582 /* PlacesInfrastructureMocks in Frameworks */,
 				CCAF47662CCE5D1D0043C213 /* MockFramework in Frameworks */,
-				CCAF47912CCE6E240043C213 /* OHHTTPStubsSwift in Frameworks */,
-				CCAF478F2CCE6E240043C213 /* OHHTTPStubs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +118,11 @@
 			);
 			name = Places;
 			packageProductDependencies = (
-				CCAF479D2CCE84F80043C213 /* Alamofire */,
+				CC4896B32CCF768000C657A9 /* PlacesInfrastructure */,
+				CC4896B62CCF76A000C657A9 /* PlacesDomain */,
+				CCB6B2B02CCFF9D300098412 /* PlacesDomain */,
+				CCEFBFB92CD023DE0080D582 /* PlacesDomain */,
+				CCEFBFBE2CD023EC0080D582 /* PlacesInfrastructure */,
 			);
 			productName = Places;
 			productReference = CCA170D42CCC166D0062EBDA /* Places.app */;
@@ -131,8 +147,10 @@
 			name = PlacesTests;
 			packageProductDependencies = (
 				CCAF47652CCE5D1D0043C213 /* MockFramework */,
-				CCAF478E2CCE6E240043C213 /* OHHTTPStubs */,
-				CCAF47902CCE6E240043C213 /* OHHTTPStubsSwift */,
+				CCB6B2B22CCFF9D300098412 /* PlacesDomainMocks */,
+				CCEFBFB62CD023930080D582 /* PlacesInfrastructureMocks */,
+				CCEFBFBB2CD023DE0080D582 /* PlacesDomainMocks */,
+				CCEFBFC02CD023EC0080D582 /* PlacesInfrastructureMocks */,
 			);
 			productName = PlacesTests;
 			productReference = CCA170E42CCC166E0062EBDA /* PlacesTests.xctest */;
@@ -169,8 +187,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CCAF47642CCE5D1D0043C213 /* XCLocalSwiftPackageReference "../MockFramework" */,
-				CCAF478D2CCE6E240043C213 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
-				CCAF479C2CCE84F80043C213 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				CCEFBFB82CD023DE0080D582 /* XCLocalSwiftPackageReference "../PlacesDomain" */,
+				CCEFBFBD2CD023EC0080D582 /* XCLocalSwiftPackageReference "../PlacesInfrastructure" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CCA170D52CCC166D0062EBDA /* Products */;
@@ -416,7 +434,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 824M6S9864;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.whizit.PlacesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -435,7 +453,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 824M6S9864;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.whizit.PlacesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -483,46 +501,56 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../MockFramework;
 		};
+		CCEFBFB82CD023DE0080D582 /* XCLocalSwiftPackageReference "../PlacesDomain" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../PlacesDomain;
+		};
+		CCEFBFBD2CD023EC0080D582 /* XCLocalSwiftPackageReference "../PlacesInfrastructure" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../PlacesInfrastructure;
+		};
 /* End XCLocalSwiftPackageReference section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		CCAF478D2CCE6E240043C213 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.1.0;
-			};
-		};
-		CCAF479C2CCE84F80043C213 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.10.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
+		CC4896B32CCF768000C657A9 /* PlacesInfrastructure */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PlacesInfrastructure;
+		};
+		CC4896B62CCF76A000C657A9 /* PlacesDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PlacesDomain;
+		};
 		CCAF47652CCE5D1D0043C213 /* MockFramework */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MockFramework;
 		};
-		CCAF478E2CCE6E240043C213 /* OHHTTPStubs */ = {
+		CCB6B2B02CCFF9D300098412 /* PlacesDomain */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CCAF478D2CCE6E240043C213 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
-			productName = OHHTTPStubs;
+			productName = PlacesDomain;
 		};
-		CCAF47902CCE6E240043C213 /* OHHTTPStubsSwift */ = {
+		CCB6B2B22CCFF9D300098412 /* PlacesDomainMocks */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CCAF478D2CCE6E240043C213 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
-			productName = OHHTTPStubsSwift;
+			productName = PlacesDomainMocks;
 		};
-		CCAF479D2CCE84F80043C213 /* Alamofire */ = {
+		CCEFBFB62CD023930080D582 /* PlacesInfrastructureMocks */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CCAF479C2CCE84F80043C213 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
+			productName = PlacesInfrastructureMocks;
+		};
+		CCEFBFB92CD023DE0080D582 /* PlacesDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PlacesDomain;
+		};
+		CCEFBFBB2CD023DE0080D582 /* PlacesDomainMocks */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PlacesDomainMocks;
+		};
+		CCEFBFBE2CD023EC0080D582 /* PlacesInfrastructure */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PlacesInfrastructure;
+		};
+		CCEFBFC02CD023EC0080D582 /* PlacesInfrastructureMocks */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PlacesInfrastructureMocks;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
