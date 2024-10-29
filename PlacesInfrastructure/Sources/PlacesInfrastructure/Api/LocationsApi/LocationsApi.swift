@@ -6,5 +6,5 @@
 //
 
 public protocol LocationsApi {
-    func getLocations() async throws -> [Location]
+    func getLocations() async throws -> [LocationDTO]
 }

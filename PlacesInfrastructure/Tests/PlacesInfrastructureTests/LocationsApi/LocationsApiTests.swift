@@ -22,8 +22,8 @@ final class LocationsApiTests: XCTestCase {
     
     func testLocationsRequestSucceeds() async throws {
         // Given
-        let expectedLocationResult = LocationsResult(locations: [Location(name: "Location1", lat: 0.0, long: 0.1),
-                                                                 Location(name: "Location1", lat: 1.0, long: 0.12)])
+        let expectedLocationResult = LocationsResultDTO(locations: [LocationDTO(name: "Location1", lat: 0.0, long: 0.1),
+                                                                 LocationDTO(name: "Location1", lat: 1.0, long: 0.12)])
         
         apiClientMock.mock.executeCalls.mockCall { _ in
             return expectedLocationResult

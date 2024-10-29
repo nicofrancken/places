@@ -32,7 +32,6 @@ let package = Package(
             name: "PlacesDomainMocks",
             dependencies: [
                 "PlacesDomain",
-                "PlacesInfrastructure",
                 .product(name: "MockFramework", package: "MockFramework")
             ],
             path: "Sources/PlacesDomainMocks"),
@@ -41,7 +40,6 @@ let package = Package(
             dependencies: [
                 "PlacesDomain",
                 "PlacesDomainMocks",
-                "PlacesInfrastructure",
                 .product(name: "PlacesInfrastructureMocks", package: "PlacesInfrastructure"),
                 .product(name: "MockFramework", package: "MockFramework")
             ]

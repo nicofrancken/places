@@ -6,7 +6,6 @@
 //
 
 import MockFramework
-import PlacesInfrastructure
 
 @testable import PlacesDomain
 

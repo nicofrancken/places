@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import PlacesDomain
 import PlacesDomainMocks
 import PlacesInfrastructure
 
@@ -26,8 +27,8 @@ final class LocationsViewModelTests: XCTestCase {
     
     func testGetLocationsSucceeds() async {
         // Given
-        let expectedLocations: [Location] = [Location(name: "Location1", lat: 0.0, long: 0.1),
-                                             Location(name: "Location1", lat: 1.0, long: 0.12)]
+        let expectedLocations: [Location] = [Location(name: "Location1", latitude: 0.0, longitude: 0.1),
+                                             Location(name: "Location1", latitude: 1.0, longitude: 0.12)]
         
         getLocationsUseCaseMock.mock.callAsFunctionCalls.mockCall { _ in
             return expectedLocations
@@ -57,28 +58,14 @@ final class LocationsViewModelTests: XCTestCase {
     
     func testLaunchWikipediaWithCoordinates() async {
         // Given
-        let expectedSelectedLocation = Location(name: "Location1", lat: 0.0, long: 0.1)
+        let expectedSelectedLocation = Location(name: "Location1", latitude: 0.0, longitude: 0.1)
         
         // When
-        await locationsViewModel.selectLocation(expectedSelectedLocation)
+        await locationsViewModel.launchWiki(expectedSelectedLocation)
         
         // Then
         XCTAssertEqual(expectedSelectedLocation, locationsViewModel.selectedLocation)
-        XCTAssertEqual(launchWikipediaWithCoordinatesUseCaseMock.mock.callAsFunctionCalls.callsHistory.map { $0.0 }, [expectedSelectedLocation.lat])
-        XCTAssertEqual(launchWikipediaWithCoordinatesUseCaseMock.mock.callAsFunctionCalls.callsHistory.map { $0.1 }, [expectedSelectedLocation.long])
-    }
-    
-    func testLaunchWikipediaWithCoordinatesDirectly() async {
-        // Given
-        // Given
-        let customLocation = Location(name: "Location1", lat: 0.0, long: 0.1)
-        
-        // When
-        locationsViewModel.launchWiki(customLocation)
-        
-        // Then
-        XCTAssertNil(locationsViewModel.selectedLocation)
-        XCTAssertEqual(launchWikipediaWithCoordinatesUseCaseMock.mock.callAsFunctionCalls.callsHistory.map { $0.0 }, [customLocation.lat])
-        XCTAssertEqual(launchWikipediaWithCoordinatesUseCaseMock.mock.callAsFunctionCalls.callsHistory.map { $0.1 }, [customLocation.long])
+        XCTAssertEqual(launchWikipediaWithCoordinatesUseCaseMock.mock.callAsFunctionCalls.callsHistory.map { $0.0 }, [expectedSelectedLocation.latitude])
+        XCTAssertEqual(launchWikipediaWithCoordinatesUseCaseMock.mock.callAsFunctionCalls.callsHistory.map { $0.1 }, [expectedSelectedLocation.longitude])
     }
 }

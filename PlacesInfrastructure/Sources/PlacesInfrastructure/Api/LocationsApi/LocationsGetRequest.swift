@@ -8,7 +8,7 @@
 import Foundation
 
 struct LocationsGetRequest: ApiRequest, Sendable {
-    typealias ResponseType = LocationsResult
+    typealias ResponseType = LocationsResultDTO
     let baseURL: String
     let path: String = "abnamrocoesd/assignment-ios/main/locations.json"
     let method: HttpMethod = .get

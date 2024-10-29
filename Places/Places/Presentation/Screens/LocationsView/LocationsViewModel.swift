@@ -28,32 +28,26 @@ class LocationsViewModel: ObservableObject {
     func populateLocations() async {
         do {
             let newLocations = try await getLocationsUseCase()
-            await updateLocationsUIState(newLocations: newLocations)
+            await updateLocations(newLocations: newLocations)
         } catch {
-            await updateErrorUIState(error: .locationPolulationFailed)
+            await updateError(error: .locationPolulationFailed)
         }
     }
     
     @MainActor
-    func selectLocation(_ location: Location) {
+    func launchWiki(_ location: Location) async {
         selectedLocation = location
-        launchWiki(location)
-    }
-    
-    func launchWiki(_ location: Location) {
-        Task {
-            await launchWikipediaWithCoordinatesUseCase(latitude: location.lat,
-                                                        longitude: location.long)
-        }
+        await launchWikipediaWithCoordinatesUseCase(latitude: location.latitude,
+                                                    longitude: location.longitude)
     }
     
     @MainActor
-    private func updateLocationsUIState(newLocations: [Location]) {
+    private func updateLocations(newLocations: [Location]) {
         self.locations = newLocations
     }
     
     @MainActor
-    private func updateErrorUIState(error: LocationsViewError) {
+    private func updateError(error: LocationsViewError) {
         self.error = error
     }
 }

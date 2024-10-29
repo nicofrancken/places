@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import PlacesInfrastructure
+import PlacesDomain
 
 struct LocationsView: View {
     @StateObject var viewModel = LocationsViewModelFactory.shared.getInstance()
@@ -60,7 +60,9 @@ struct LocationsView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(viewModel.locations) { location in
                             Button {
-                                viewModel.selectLocation(location)
+                                Task {
+                                    await viewModel.launchWiki(location)
+                                }
                             } label: {
                                 HStack(alignment: .center) {
                                     Text(location.name ?? "")
@@ -69,12 +71,12 @@ struct LocationsView: View {
                                     
                                     VStack(alignment: .leading) {
                                         Text("Latitude")
-                                        Text("\(location.lat)")
+                                        Text("\(location.latitude)")
                                     }
                                     
                                     VStack(alignment: .leading) {
                                         Text("Longitude")
-                                        Text("\(location.long)")
+                                        Text("\(location.longitude)")
                                     }
                                 }
                                 .padding()
@@ -84,11 +86,9 @@ struct LocationsView: View {
                                 .cornerRadius(10)
                             }
                             .accessibilityLabel("Select coordinate button")
-                            .accessibilityHint("Opens latitude: \(location.lat) and longitude: \(location.long) in Wikiepdia app")
+                            .accessibilityHint("Opens latitude: \(location.latitude) and longitude: \(location.longitude) in Wikiepdia app")
                         }
                     }
-                    
-                    
                 }
                 
             }
@@ -122,7 +122,9 @@ struct LocationsView: View {
         }
         
         if let lat = Double(latitude), let long = Double(longitude) {
-            viewModel.launchWiki(Location(name: nil, lat: lat, long: long))
+            Task {
+                await viewModel.launchWiki(Location(name: nil, latitude: lat, longitude: long))
+            }
         }
     }
 }

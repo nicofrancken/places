@@ -15,7 +15,7 @@ public class LocationsApiImp: LocationsApi {
         self.apiClient = apiClient
     }
     
-    public func getLocations() async throws -> [Location] {
+    public func getLocations() async throws -> [LocationDTO] {
         let request = LocationsGetRequest(baseURL: baseUrl)
         
         do {

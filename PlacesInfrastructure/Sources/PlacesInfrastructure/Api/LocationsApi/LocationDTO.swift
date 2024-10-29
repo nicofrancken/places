@@ -5,7 +5,7 @@
 //  Created by Nico Francken on 25/10/2024.
 //
 
-public struct Location: Decodable, Equatable, Sendable, Identifiable {
+public struct LocationDTO: Decodable, Equatable, Sendable {
     public let name: String?
     public let lat: Double
     public let long: Double
@@ -15,6 +15,4 @@ public struct Location: Decodable, Equatable, Sendable, Identifiable {
         self.lat = lat
         self.long = long
     }
-    
-    public var id: String { "\(lat)-\(long)" }
 }

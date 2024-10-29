@@ -14,16 +14,16 @@ public final class LocationsApiMock: LocationsApi {
 
     public init(){}
     
-    public func getLocations() async throws -> [Location] {
+    public func getLocations() async throws -> [LocationDTO] {
         return try await mock.getLocationsCalls.record(())
     }
 }
 
 extension LocationsApiMock {
     public final class LocationsApiMockMock {
-        public var getLocationsCalls = MockAsyncThrowable<Void, [Location]>()
+        public var getLocationsCalls = MockAsyncThrowable<Void, [LocationDTO]>()
 
-        func getLocations() async throws -> [Location] {
+        func getLocations() async throws -> [LocationDTO] {
             return try await getLocationsCalls.record(())
         }
     }

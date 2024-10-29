@@ -15,6 +15,6 @@ public class LocationsRepositoryImp: LocationsRepository {
     }
     
     public func getAllLocations() async throws -> [Location] {
-        try await locationsApi.getLocations()
+        try await locationsApi.getLocations().map { $0.toEntity() }
     }
 }

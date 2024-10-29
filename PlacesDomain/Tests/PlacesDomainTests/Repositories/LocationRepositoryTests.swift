@@ -23,11 +23,12 @@ final class LocationRepositoryTests: XCTestCase {
 
     func testGetLocationApiSuccessful() async throws {
         // Given
-        let expectedLocations: [Location] = [Location(name: "Location1", lat: 0.0, long: 0.1),
-                                             Location(name: "Location1", lat: 1.0, long: 0.12)]
+        let locations: [LocationDTO] = [LocationDTO(name: "Location1", lat: 0.0, long: 0.1),
+                                        LocationDTO(name: "Location1", lat: 1.0, long: 0.12)]
+        let expectedLocations = locations.map { $0.toEntity() }
         
         locationApiMock.mock.getLocationsCalls.mockCall { _ in
-            return expectedLocations
+            return locations
         }
         
         // When
@@ -50,7 +51,7 @@ final class LocationRepositoryTests: XCTestCase {
             _ = try await locationRepository.getAllLocations()
             
             XCTFail("Expected LocationsApiError to be thrown")
-        } catch let error as LocationsApiError {
+        } catch _ as LocationsApiError {
             // Then
             return
         } catch {

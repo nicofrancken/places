@@ -7,17 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC4896B42CCF768000C657A9 /* PlacesInfrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = CC4896B32CCF768000C657A9 /* PlacesInfrastructure */; };
 		CC4896B72CCF76A000C657A9 /* PlacesDomain in Frameworks */ = {isa = PBXBuildFile; productRef = CC4896B62CCF76A000C657A9 /* PlacesDomain */; };
 		CCAF47662CCE5D1D0043C213 /* MockFramework in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF47652CCE5D1D0043C213 /* MockFramework */; };
 		CCAF47932CCE759B0043C213 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CCAF47922CCE759B0043C213 /* Localizable.xcstrings */; };
 		CCB6B2B12CCFF9D300098412 /* PlacesDomain in Frameworks */ = {isa = PBXBuildFile; productRef = CCB6B2B02CCFF9D300098412 /* PlacesDomain */; };
-		CCB6B2B32CCFF9D300098412 /* PlacesDomainMocks in Frameworks */ = {isa = PBXBuildFile; productRef = CCB6B2B22CCFF9D300098412 /* PlacesDomainMocks */; };
-		CCEFBFB72CD023930080D582 /* PlacesInfrastructureMocks in Frameworks */ = {isa = PBXBuildFile; productRef = CCEFBFB62CD023930080D582 /* PlacesInfrastructureMocks */; };
+		CCDC9A802CD0FEDB00D015E2 /* PlacesDomain in Frameworks */ = {isa = PBXBuildFile; productRef = CCDC9A7F2CD0FEDB00D015E2 /* PlacesDomain */; };
+		CCDC9A822CD0FEDB00D015E2 /* PlacesDomainMocks in Frameworks */ = {isa = PBXBuildFile; productRef = CCDC9A812CD0FEDB00D015E2 /* PlacesDomainMocks */; };
 		CCEFBFBA2CD023DE0080D582 /* PlacesDomain in Frameworks */ = {isa = PBXBuildFile; productRef = CCEFBFB92CD023DE0080D582 /* PlacesDomain */; };
-		CCEFBFBC2CD023DE0080D582 /* PlacesDomainMocks in Frameworks */ = {isa = PBXBuildFile; productRef = CCEFBFBB2CD023DE0080D582 /* PlacesDomainMocks */; };
-		CCEFBFBF2CD023EC0080D582 /* PlacesInfrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = CCEFBFBE2CD023EC0080D582 /* PlacesInfrastructure */; };
-		CCEFBFC12CD023EC0080D582 /* PlacesInfrastructureMocks in Frameworks */ = {isa = PBXBuildFile; productRef = CCEFBFC02CD023EC0080D582 /* PlacesInfrastructureMocks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,11 +51,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDC9A802CD0FEDB00D015E2 /* PlacesDomain in Frameworks */,
 				CCEFBFBA2CD023DE0080D582 /* PlacesDomain in Frameworks */,
 				CCB6B2B12CCFF9D300098412 /* PlacesDomain in Frameworks */,
 				CC4896B72CCF76A000C657A9 /* PlacesDomain in Frameworks */,
-				CC4896B42CCF768000C657A9 /* PlacesInfrastructure in Frameworks */,
-				CCEFBFBF2CD023EC0080D582 /* PlacesInfrastructure in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,10 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCEFBFB72CD023930080D582 /* PlacesInfrastructureMocks in Frameworks */,
-				CCB6B2B32CCFF9D300098412 /* PlacesDomainMocks in Frameworks */,
-				CCEFBFBC2CD023DE0080D582 /* PlacesDomainMocks in Frameworks */,
-				CCEFBFC12CD023EC0080D582 /* PlacesInfrastructureMocks in Frameworks */,
+				CCDC9A822CD0FEDB00D015E2 /* PlacesDomainMocks in Frameworks */,
 				CCAF47662CCE5D1D0043C213 /* MockFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,11 +110,10 @@
 			);
 			name = Places;
 			packageProductDependencies = (
-				CC4896B32CCF768000C657A9 /* PlacesInfrastructure */,
 				CC4896B62CCF76A000C657A9 /* PlacesDomain */,
 				CCB6B2B02CCFF9D300098412 /* PlacesDomain */,
 				CCEFBFB92CD023DE0080D582 /* PlacesDomain */,
-				CCEFBFBE2CD023EC0080D582 /* PlacesInfrastructure */,
+				CCDC9A7F2CD0FEDB00D015E2 /* PlacesDomain */,
 			);
 			productName = Places;
 			productReference = CCA170D42CCC166D0062EBDA /* Places.app */;
@@ -147,10 +138,7 @@
 			name = PlacesTests;
 			packageProductDependencies = (
 				CCAF47652CCE5D1D0043C213 /* MockFramework */,
-				CCB6B2B22CCFF9D300098412 /* PlacesDomainMocks */,
-				CCEFBFB62CD023930080D582 /* PlacesInfrastructureMocks */,
-				CCEFBFBB2CD023DE0080D582 /* PlacesDomainMocks */,
-				CCEFBFC02CD023EC0080D582 /* PlacesInfrastructureMocks */,
+				CCDC9A812CD0FEDB00D015E2 /* PlacesDomainMocks */,
 			);
 			productName = PlacesTests;
 			productReference = CCA170E42CCC166E0062EBDA /* PlacesTests.xctest */;
@@ -187,8 +175,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CCAF47642CCE5D1D0043C213 /* XCLocalSwiftPackageReference "../MockFramework" */,
-				CCEFBFB82CD023DE0080D582 /* XCLocalSwiftPackageReference "../PlacesDomain" */,
 				CCEFBFBD2CD023EC0080D582 /* XCLocalSwiftPackageReference "../PlacesInfrastructure" */,
+				CCDC9A7E2CD0FEDB00D015E2 /* XCLocalSwiftPackageReference "../PlacesDomain" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CCA170D52CCC166D0062EBDA /* Products */;
@@ -501,7 +489,7 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../MockFramework;
 		};
-		CCEFBFB82CD023DE0080D582 /* XCLocalSwiftPackageReference "../PlacesDomain" */ = {
+		CCDC9A7E2CD0FEDB00D015E2 /* XCLocalSwiftPackageReference "../PlacesDomain" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../PlacesDomain;
 		};
@@ -512,10 +500,6 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CC4896B32CCF768000C657A9 /* PlacesInfrastructure */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PlacesInfrastructure;
-		};
 		CC4896B62CCF76A000C657A9 /* PlacesDomain */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PlacesDomain;
@@ -528,29 +512,17 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = PlacesDomain;
 		};
-		CCB6B2B22CCFF9D300098412 /* PlacesDomainMocks */ = {
+		CCDC9A7F2CD0FEDB00D015E2 /* PlacesDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PlacesDomain;
+		};
+		CCDC9A812CD0FEDB00D015E2 /* PlacesDomainMocks */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PlacesDomainMocks;
-		};
-		CCEFBFB62CD023930080D582 /* PlacesInfrastructureMocks */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PlacesInfrastructureMocks;
 		};
 		CCEFBFB92CD023DE0080D582 /* PlacesDomain */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PlacesDomain;
-		};
-		CCEFBFBB2CD023DE0080D582 /* PlacesDomainMocks */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PlacesDomainMocks;
-		};
-		CCEFBFBE2CD023EC0080D582 /* PlacesInfrastructure */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PlacesInfrastructure;
-		};
-		CCEFBFC02CD023EC0080D582 /* PlacesInfrastructureMocks */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PlacesInfrastructureMocks;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

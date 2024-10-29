@@ -22,7 +22,7 @@ final class GetLocationsUseCaseTests: XCTestCase {
 
     func testProxyRepositoryGetLocations() async throws {
         // Given
-        let expectedLocations: [Location] = [Location(name: "Location1", lat: 0.0, long: 0.1)]
+        let expectedLocations: [Location] = [Location(name: "Location1", latitude: 0.0, longitude: 0.1)]
         
         locationsRepositoryMock.mock.getAllLocationsCalls.mockCall { _ in
             return expectedLocations
