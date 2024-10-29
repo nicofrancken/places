@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import PlacesInfrastructure
 
 @testable import PlacesDomainMocks
 @testable import PlacesDomain

@@ -23,8 +23,8 @@ final class LocationRepositoryTests: XCTestCase {
 
     func testGetLocationApiSuccessful() async throws {
         // Given
-        let locations: [LocationDTO] = [LocationDTO(name: "Location1", lat: 0.0, long: 0.1),
-                                        LocationDTO(name: "Location1", lat: 1.0, long: 0.12)]
+        let locations = [LocationDTO(name: "Location1", lat: 0.0, long: 0.1),
+                         LocationDTO(name: "Location1", lat: 1.0, long: 0.12)]
         let expectedLocations = locations.map { $0.toEntity() }
         
         locationApiMock.mock.getLocationsCalls.mockCall { _ in

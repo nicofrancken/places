@@ -1,5 +1,5 @@
 //
-//  Location.swift
+//  LocationDTO.swift
 //  Places
 //
 //  Created by Nico Francken on 25/10/2024.
