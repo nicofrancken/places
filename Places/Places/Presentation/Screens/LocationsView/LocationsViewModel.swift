@@ -40,12 +40,6 @@ class LocationsViewModel: ObservableObject {
         launchWiki(location)
     }
     
-    @MainActor
-    func opem(_ customLocation: Location) {
-        selectedLocation = customLocation
-        launchWiki(customLocation)
-    }
-    
     func launchWiki(_ location: Location) {
         Task {
             await launchWikipediaWithCoordinatesUseCase(latitude: location.lat,
