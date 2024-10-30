@@ -7,13 +7,11 @@
 
 import SwiftUI
 import PlacesDomain
-import PlacesInfrastructure
 
 class LocationsViewModel: ObservableObject {
     @Published var locations = [Location]()
     @Published var selectedLocation: Location?
     @Published var error: LocationsViewError?
-    @Published var isLoading = false
     
     // Dependencies
     private let getLocationsUseCase: GetLocationsUseCase
