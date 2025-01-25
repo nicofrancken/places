@@ -8,6 +8,7 @@
 import SwiftUI
 import PlacesDomain
 
+@MainActor
 class LocationsViewModel: ObservableObject {
     @Published var locations = [Location]()
     @Published var selectedLocation: Location?
@@ -26,25 +27,22 @@ class LocationsViewModel: ObservableObject {
     func populateLocations() async {
         do {
             let newLocations = try await getLocationsUseCase()
-            await updateLocations(newLocations: newLocations)
+            updateLocations(newLocations: newLocations)
         } catch {
-            await updateError(error: .locationPolulationFailed)
+            updateError(error: .locationPolulationFailed)
         }
     }
     
-    @MainActor
     func launchWiki(_ location: Location) async {
         selectedLocation = location
         await launchWikipediaWithCoordinatesUseCase(latitude: location.latitude,
                                                     longitude: location.longitude)
     }
     
-    @MainActor
     private func updateLocations(newLocations: [Location]) {
         self.locations = newLocations
     }
     
-    @MainActor
     private func updateError(error: LocationsViewError) {
         self.error = error
     }

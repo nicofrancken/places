@@ -12,6 +12,7 @@ import PlacesInfrastructure
 
 @testable import Places
 
+@MainActor
 final class LocationsViewModelTests: XCTestCase {
     private var getLocationsUseCaseMock: GetLocationsUseCaseMock!
     private var launchWikipediaWithCoordinatesUseCaseMock: LaunchWikipediaWithCoordinatesUseCaseMock!

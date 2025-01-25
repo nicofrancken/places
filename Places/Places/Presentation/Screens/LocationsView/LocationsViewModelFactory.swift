@@ -7,6 +7,7 @@
 
 import PlacesDomain
 
+@MainActor
 final class LocationsViewModelFactory {
     static let shared = LocationsViewModelFactory()
     

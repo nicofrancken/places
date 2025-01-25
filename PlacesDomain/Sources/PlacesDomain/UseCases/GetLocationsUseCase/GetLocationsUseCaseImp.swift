@@ -7,14 +7,14 @@
 
 import PlacesInfrastructure
 
-public class GetLocationsUseCaseImp: GetLocationsUseCase {
+public final class GetLocationsUseCaseImp: GetLocationsUseCase {
     private let locationsRepository: LocationsRepository
     
     public init(locationsRepository: LocationsRepository) {
         self.locationsRepository = locationsRepository
     }
 
-    public func callAsFunction() async throws -> [Location] {
+    public nonisolated func callAsFunction() async throws -> [Location] {
         try await locationsRepository.getAllLocations()
     }
 }

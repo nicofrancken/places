@@ -5,7 +5,7 @@
 //  Created by Nico Francken on 29/10/2024.
 //
 
-public struct Location: Decodable, Equatable, Identifiable {
+public struct Location: Decodable, Equatable, Identifiable, Sendable {
     public let name: String?
     public let latitude: Double
     public let longitude: Double

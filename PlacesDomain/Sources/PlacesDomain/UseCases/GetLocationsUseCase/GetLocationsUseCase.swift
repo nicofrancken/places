@@ -7,6 +7,6 @@
 
 import PlacesInfrastructure
 
-public protocol GetLocationsUseCase {
+public protocol GetLocationsUseCase: Sendable {
     func callAsFunction() async throws -> [Location]
 }

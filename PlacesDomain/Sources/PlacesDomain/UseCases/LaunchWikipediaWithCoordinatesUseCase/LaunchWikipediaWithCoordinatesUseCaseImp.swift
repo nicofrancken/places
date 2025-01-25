@@ -7,7 +7,7 @@
 
 import PlacesInfrastructure
 
-public class LaunchWikipediaWithCoordinatesUseCaseImp: LaunchWikipediaWithCoordinatesUseCase {
+public final class LaunchWikipediaWithCoordinatesUseCaseImp: LaunchWikipediaWithCoordinatesUseCase {
     private let wikipediaAppLauncer: WikipediaAppLauncher
     
     public init (wikipediaAppLauncher: WikipediaAppLauncher) {
