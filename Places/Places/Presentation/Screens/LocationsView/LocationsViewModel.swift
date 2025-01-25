@@ -10,9 +10,9 @@ import PlacesDomain
 
 @MainActor
 class LocationsViewModel: ObservableObject {
-    @Published var locations = [Location]()
-    @Published var selectedLocation: Location?
-    @Published var error: LocationsViewError?
+    private var locations: [Location] = []
+    @Published var state: LocationsViewState = .empty
+    @Published var viewError: LocationsViewError?
     
     // Dependencies
     private let getLocationsUseCase: GetLocationsUseCase
@@ -26,24 +26,30 @@ class LocationsViewModel: ObservableObject {
     
     func populateLocations() async {
         do {
-            let newLocations = try await getLocationsUseCase()
-            updateLocations(newLocations: newLocations)
+            state = .loading
+            locations = try await getLocationsUseCase()
+            state = .loaded(locations)
         } catch {
-            updateError(error: .locationPolulationFailed)
+            viewError = .locationPolulationFailed
         }
+
+    }
+    
+    func addLocation(_ location: Location) async {
+        guard !locations.contains(location) else {
+            viewError = .locationAlreadyAdded
+            return
+        }
+        
+        locations.append(location)
+        
+        await launchWiki(location)
     }
     
     func launchWiki(_ location: Location) async {
-        selectedLocation = location
+        state = .loaded(locations, selectedLocation: location)
+        
         await launchWikipediaWithCoordinatesUseCase(latitude: location.latitude,
                                                     longitude: location.longitude)
-    }
-    
-    private func updateLocations(newLocations: [Location]) {
-        self.locations = newLocations
-    }
-    
-    private func updateError(error: LocationsViewError) {
-        self.error = error
     }
 }

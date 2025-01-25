@@ -162,6 +162,26 @@
         }
       }
     },
+    "Location already exists in the list" : {
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locatie bestaat al in de lijst"
+          }
+        }
+      }
+    },
+    "Location duplication error" : {
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locatie duplicatie fout"
+          }
+        }
+      }
+    },
     "Location selection screen" : {
       "localizations" : {
         "en" : {
@@ -275,11 +295,11 @@
         }
       }
     },
-    "Opens latitude: %lf and longitude: %lf in Wikiepdia app" : {
+    "Opens latitude: %lf and longitude: %lf in Wikipedia app" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Opens latitude: %1$lf and longitude: %2$lf in Wikipedia app"
           }
         },

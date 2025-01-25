@@ -58,47 +58,30 @@ struct LocationsView: View {
                 
                 ScrollView(.vertical) {
                     VStack(alignment: .leading, spacing: 10) {
-                        ForEach(viewModel.locations) { location in
-                            Button {
-                                Task {
-                                    await viewModel.launchWiki(location)
-                                }
-                            } label: {
-                                HStack(alignment: .center) {
-                                    Text(location.name ?? "")
-                                        .font(.title)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text("Latitude")
-                                        Text("\(location.latitude)")
-                                    }
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text("Longitude")
-                                        Text("\(location.longitude)")
-                                    }
-                                }
-                                .padding()
-                                .foregroundColor(.black)
-                                .font(.caption)
-                                .background(isSelectedLocation(location) ? .blue : .cyan)
-                                .cornerRadius(10)
-                            }
-                            .accessibilityLabel("Select coordinate button")
-                            .accessibilityHint("Opens latitude: \(location.latitude) and longitude: \(location.longitude) in Wikiepdia app")
+                        switch viewModel.state {
+                        case .empty:
+                            EmptyView()
+                        case .loading:
+                            ProgressView()
+                        case .loaded(let locations, let selectedLocation):
+                            showLocations(locations: locations, selectedLocation: selectedLocation)
                         }
                     }
                 }
-                
             }
         }
-        .alert(item: $viewModel.error) { error in
+        .alert(item: $viewModel.viewError) { error in
             switch error {
             case .locationPolulationFailed:
                 Alert(
                     title: Text("Network error"),
                     message: Text("Unable to retrieve locations"),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .locationAlreadyAdded:
+                Alert(
+                    title: Text("Location duplication error"),
+                    message: Text("Location already exists in the list"),
                     dismissButton: .default(Text("OK"))
                 )
             }
@@ -111,8 +94,38 @@ struct LocationsView: View {
         }
     }
     
-    private func isSelectedLocation(_ location: Location) -> Bool {
-        location == viewModel.selectedLocation
+    @ViewBuilder
+    private func showLocations(locations: [Location], selectedLocation: Location? = nil) -> some View {
+        ForEach(locations) { location in
+            Button {
+                Task {
+                    await viewModel.launchWiki(location)
+                }
+            } label: {
+                HStack(alignment: .center) {
+                    Text(location.name ?? "")
+                        .font(.body)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    VStack(alignment: .leading) {
+                        Text("Latitude")
+                        Text("\(location.latitude)")
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text("Longitude")
+                        Text("\(location.longitude)")
+                    }
+                }
+                .padding()
+                .background(location == selectedLocation ? .blue : .cyan)
+                .foregroundColor(.black)
+                .font(.caption)
+                .cornerRadius(10)
+            }
+            .accessibilityLabel("Select coordinate button")
+            .accessibilityHint("Opens latitude: \(location.latitude) and longitude: \(location.longitude) in Wikipedia app")
+        }
     }
     
     private func validateAndLookup() {
@@ -123,7 +136,13 @@ struct LocationsView: View {
         
         if let lat = Double(latitude), let long = Double(longitude) {
             Task {
-                await viewModel.launchWiki(Location(name: nil, latitude: lat, longitude: long))
+                await viewModel.addLocation(
+                    Location(
+                        name: nil,
+                        latitude: lat,
+                        longitude: long
+                    )
+                )
             }
         }
     }

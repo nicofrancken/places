@@ -8,7 +8,7 @@
 import PlacesDomain
 
 enum LocationsViewState {
+    case empty
     case loading
-    case loaded([Location])
-    case error(Error)
+    case loaded([Location], selectedLocation: Location? = nil)
 }

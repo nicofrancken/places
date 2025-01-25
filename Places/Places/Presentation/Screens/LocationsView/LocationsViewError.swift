@@ -7,6 +7,7 @@
 
 enum LocationsViewError: Error, Identifiable {
     case locationPolulationFailed
+    case locationAlreadyAdded
     
     var id: Self { self }
 }
